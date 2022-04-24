@@ -1,4 +1,4 @@
-# Binary classification in JAX using an MLP [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1HoJi0CYcJ4zsRxIyots1SSdIGQ_xQmby)
+# Binary classification in JAX using an MLP [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/gist/oms9/0b1bb27e8d4ccdc2b1deed7835ddd086/cs301-project-8.ipynb)
 
 
 Author:  Omar Shalaby

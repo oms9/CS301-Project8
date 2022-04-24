@@ -41,7 +41,7 @@ This MLP will perform binary classification and will be splitting the data into 
 
 Results: The results of this project is an MLP capable of classifying breast tumors based on metrics describing the tumor with 96% test accuracy in just 500 epochs, taking only about 10 minutes to train.
 
-<br>
+
 
 ---
 ### 2. Introduction
@@ -55,7 +55,7 @@ Early detection is key in preventing death, if detected early there is chance fo
 
 As we can see from the results, AI can help doctors and therefore women around the world by analyzing every bit of data about the detected tumors and providing accurate (up to 96% with little training!) predictions of the type of tumor.
 
-<br>
+
 
 ---
 
@@ -70,8 +70,6 @@ The first notebook is different from my approach because it was written in pytor
 
 
 I plan to tackle this problem in JAX, with the help of Haiku but the problem is still the same, a binary classification problem.
-
-
 
 ---
 
@@ -126,7 +124,7 @@ As mentioned, the data has 569 entries, giving us a total of 17,070 data points.
 
 Preprocessing the data was not neccessary aside from splitting it 80-20 into 80% training and 20% validation categories and a simple normalization procedure.
 
-<br>
+
 
 ---
 
@@ -143,7 +141,7 @@ if  numbers  >= x: class a
 else: class b
 ```
 
-<br>
+
 
 ---
 
@@ -159,7 +157,7 @@ We can use TensorFlow and PyTourch to compare performance to the pure JAX implem
 
 I will visualize the weights to try to understand which paramters are most impactful on the decision/classification problem when it comes to the tumors.
 
-<br>
+
 
 ---
 ### 7. Conclusion
@@ -169,7 +167,7 @@ We can see from the evaluations and results that the perceptron was very success
 
 To further improve this model, we can try to scavenge more data from more countries and different body types and ethnicities to try and strengthen the model or we can instead have different models for different ethnicities as the similarities and differences between the tumors are discovered using the model and the new data points and sources.
 
-<br>
+
 
 ---
 

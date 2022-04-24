@@ -224,7 +224,7 @@ X, Y = datasets.load_breast_cancer(return_X_y=True)
 # Y represents the prediction. 0 | 1
 #      0 → Benign, 1 → Malignant
 
-#Applying the 80-20 split.
+#Applying the 80-20 split and randomly shuffling the data using the key: 123
 parameters_train, parameters_test, predictions_train, predictions_test = train_test_split(X, Y, train_size=0.8, stratify=Y, random_state=123)
 
 #Converting the data to be JAX compatible, changing from NumPy to JAX arrays instead (which are on the GPU).

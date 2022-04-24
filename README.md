@@ -158,8 +158,6 @@ I will visualize the weights to try to understand which paramters are most impac
 <br>
 
 ---
-
-
 ### 7. Conclusion
 We can see from the evaluations and results that the perceptron was very successful!
 
@@ -171,13 +169,10 @@ To further improve this model, we can try to scavenge more data from more countr
 
 ---
 
----
-
 ##The Implementation:
-
 ---
 
-```
+```python
 #Run only once per runtime to install JAX and Haiku
 #To see the output of this cell, comment out %%capture but be warned that it is long and a little pointless
 %%capture 
@@ -206,7 +201,7 @@ print('JAX is running on the:', jax.lib.xla_bridge.get_backend().platform)
 The data as imported form SK learn is not handled on the GPU, so we convert it to be JAX compatible after performing the [80 - 20] split for the [train - test] sets.
 
 ---
-```
+```python
 #Importing the data.
 X, Y = datasets.load_breast_cancer(return_X_y=True)
 
@@ -229,7 +224,7 @@ predictions_test = jnp.array(predictions_test, dtype=jnp.float32)
 Standard data normalization procedure using the µ (mean) and the σ (standard deviation).
 
 ---
-```
+```python
 #Find µ and σ.
 mean = parameters_train.mean(axis=0)
 std = parameters_train.std(axis=0)
@@ -246,7 +241,7 @@ Here we define the forward function for the MLP and then we transform it using h
 Transformation is vital because it turns the modules/functions to pure JAX functions. This is unique to JAX since it is running on accelerated hardware, pure functions are functions that have the same output for the same input, without any print statements for example.
 
 The MLP function's default parameters are as follows:
-```
+```python
 MLP(output_size=None,
 w_init=None,
 b_init=None,
@@ -259,7 +254,7 @@ We only make the necessary changes, which is shaping the output and keep the def
 
 ---
 
-```
+```python
 def FeedForward(x):
     mlp = hk.nets.MLP(output_sizes=[5,10,15,1])
     return mlp(x)
@@ -280,7 +275,7 @@ NegLog(Y, Y`) = 1/n * ( -Y * log(Y') - (1-Y) * log(1-Y'))
 The function should accept the weights, params and diagnosis(actual) and then apply them to the model and return the loss of the predictions.
 
 ---
-```
+```python
 def NegLogLoss(weights, params, actual):
     preds = model.apply(weights, key, params) #Key is the RNG seed we initialized JAX with (2).
     preds = preds.squeeze()
@@ -293,7 +288,7 @@ def NegLogLoss(weights, params, actual):
 This is a very simple function to just update the weights using the learning rate as part of our training loop.
 
 ---
-```
+```python
 def UpdateWeights(weights,gradients):
     return (weights - learning_rate * gradients)
 ```
@@ -303,7 +298,7 @@ def UpdateWeights(weights,gradients):
 Speaking of the paramters, let's define them now!
 
 ---
-```
+```python
 params = model.init(key, parameters_train[:5])
 epochs = 500 #500 epochs to match the notebook mentioned in 3. Realted Works
 batch_size = 32 #arbitrary batch size number
@@ -316,7 +311,7 @@ learning_rate = jnp.array(0.001) #arbitrary learning rate
 Speaking of training, let's train the model!
 
 ---
-```
+```python
 for i in range(1, epochs+1):
     batches = jnp.arange((parameters_train.shape[0]//batch_size)+1) #Indexing the batches
 
@@ -344,7 +339,7 @@ for i in range(1, epochs+1):
 Now to define the predictions function, it is a similar structure to the training loop so we can make predictions in batches to more efficiently compute them over the dataset.
 
 ---
-```
+```python
 def MakePredictions(weights, params, batch_size=32):
     batches = jnp.arange((params.shape[0]//batch_size)+1) #Indexing the batches, again.
 
@@ -358,14 +353,14 @@ def MakePredictions(weights, params, batch_size=32):
 
     return predictions
 ```
-```
+```python
 #Now to make predictions using the training set.
 output_predictions = MakePredictions(params, parameters_train, 32)
 output_predictions = jnp.concatenate(output_predictions).squeeze()
 output_predictions = jax.nn.sigmoid(output_predictions)
 output_predictions = (output_predictions > 0.5).astype(jnp.float32)
 ```
-```
+```python
 #Now to prepare the validation predictions.
 validation_predictions = MakePredictions(params, parameters_test, 32)
 validation_predictions = jnp.concatenate(validation_predictions).squeeze()
@@ -380,7 +375,7 @@ Now we are going to see the score and then the accuracy of the model.
 We format the output because the loss function's raw output can be a bit messy.
 
 ---
-```
+```python
 #Scores:
 print("Test  NegLogLoss Score : {:.2f}".format(NegLogLoss(params, parameters_test, predictions_test)))
 print("Train NegLogLoss Score : {:.2f}".format(NegLogLoss(params, parameters_train, predictions_train)))

@@ -1,5 +1,6 @@
 # Binary classification in JAX using an MLP
-####Author:  Omar Shalaby
+
+##Author:  Omar Shalaby
 
 
 

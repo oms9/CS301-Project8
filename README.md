@@ -1,4 +1,5 @@
-# Binary classification in JAX using an MLP
+# Binary classification in JAX using an MLP [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://drive.google.com/file/d/1HoJi0CYcJ4zsRxIyots1SSdIGQ_xQmby/view?usp=sharing)
+
 
 Author:  Omar Shalaby
 
@@ -11,6 +12,9 @@ https://www.kaggle.com/competitions/breast-cancer-data/overview
 https://scikit-learn.org/stable/datasets/toy_dataset.html#breast-cancer-wisconsin-diagnostic-dataset
 
 https://coderzcolumn.com/tutorials/artificial-intelligence/create-neural-networks-using-high-level-jax-api
+
+Colab notebook for this project:
+https://drive.google.com/file/d/1HoJi0CYcJ4zsRxIyots1SSdIGQ_xQmby/view?usp=sharing
 
 ---
 ## Project report:
@@ -59,15 +63,15 @@ As we can see from the results, AI can help doctors and therefore women around t
 ### 3. Related works
 [This](https://www.kaggle.com/code/ratnesh88/breast-cancer-prediction-using-pytorch/notebook) notebook served as a guide to help tackle this problem and [this](https://theaisummer.com/jax-transformer/) article helped me understand how to use haiku to build an MLP.
 
-<br>
+
 
 The first notebook is different from my approach because it was written in pytorch and took 500 epochs to produce good results.
 
-<br>
+
 
 I plan to tackle this problem in JAX, with the help of Haiku but the problem is still the same, a binary classification problem.
 
-<br>
+
 
 ---
 

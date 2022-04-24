@@ -60,20 +60,15 @@ Results: The results of this project is an MLP capable of classifying breast tum
 #### 3. What are JAX and Haiku?
 
 > JAX is a python library that allows tasks to be run asynchronously on accelerator hardware and performs matrix manipulation and differentiation on a GPU/TPU extremely quickly and efficiently, it is designed from the ground up to be a high-performance library for ML research, it is quite similar to Numpy.
-
 > Haiku is a library built on top of JAX that enables users to use familiar object-oriented programming models while allowing full access to JAX’s pure function transformations, Haiku is desgined to make managing model parameters and state simple and easy.
 
 
 
 #### 4. Why breast cancer?
 
-Breast cancer is the single most common cancer among women, it is a large threat and an even larger cause of death for women worldwide. Approximately 124 out of 100,000 women are diagnosed with breast cancer, 23 of which are likely to die because of the tumor.
-
-
-Early detection is key in preventing death, if detected early there is chance for successful treatment, 30% and steadily rising. So it is important that we spend a lot of effort on early detection so that the research and effort dedicated towards treatment is more impactful.
-
-
-As we can see from the results, AI can help doctors and therefore women around the world by analyzing every bit of data about the detected tumors and providing accurate (up to 96% with little training!) predictions of the type of tumor.
+> Breast cancer is the single most common cancer among women, it is a large threat and an even larger cause of death for women worldwide. Approximately 124 out of 100,000 women are diagnosed with breast cancer, 23 of which are likely to die because of the tumor.
+> Early detection is key in preventing death, if detected early there is chance for successful treatment, 30% and steadily rising. So it is important that we spend a lot of effort on early detection so that the research and effort dedicated towards treatment is more impactful.
+> As we can see from the results, AI can help doctors and therefore women around the world by analyzing every bit of data about the detected tumors and providing accurate (up to 96% with little training!) predictions of the type of tumor.
 
 <br>
 

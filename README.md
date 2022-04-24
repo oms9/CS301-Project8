@@ -132,9 +132,6 @@ The data came from: Dr. William H. Wolberg, W. Nick Street, Olvi L. Mangasarian
 
 https://archive.ics.uci.edu/ml/datasets/Breast+Cancer+Wisconsin+(Diagnostic)
 
-
-<br>
-
 As mentioned, the data has 569 entries, giving us a total of 17,070 data points. 
 
 Preprocessing the data was not neccessary aside from splitting it 80-20 into 80% training and 20% validation categories and a simple normalization procedure.

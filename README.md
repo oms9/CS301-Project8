@@ -1,4 +1,4 @@
-# Binary classification in JAX using an MLP [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://github.com/oms9/CS301-Project8/blob/main/CS301%20Project%208.ipynb)
+# Binary classification in JAX using an MLP [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1HoJi0CYcJ4zsRxIyots1SSdIGQ_xQmby)
 
 
 Author:  Omar Shalaby
@@ -14,7 +14,7 @@ https://scikit-learn.org/stable/datasets/toy_dataset.html#breast-cancer-wisconsi
 https://coderzcolumn.com/tutorials/artificial-intelligence/create-neural-networks-using-high-level-jax-api
 
 Colab notebook for this project:
-https://drive.google.com/file/d/1HoJi0CYcJ4zsRxIyots1SSdIGQ_xQmby/view?usp=sharing
+https://colab.research.google.com/drive/1HoJi0CYcJ4zsRxIyots1SSdIGQ_xQmby
 
 ---
 ## Project report:

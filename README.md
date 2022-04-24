@@ -31,10 +31,9 @@ The dataset has 569 entries:
 <li>Malignant: 212
 </ul>
 
-
 <br>
 
-I am going to tackle this problem by creating an MLP (multi-layer perceptron) in JAX with the help of Haiku, a neural network building library for JAX, which is a python library that allows for tasks to be run asynchronously on accelerator hardware and performs matrix manipulation and differentiation on a GPU/TPU.
+I am going to tackle this problem by creating an MLP in JAX with the help of Haiku, a neural network building library for JAX, which is a python library that allows for tasks to be run asynchronously on accelerator hardware and performs matrix manipulation and differentiation on a GPU/TPU.
 
 This dataset is also present in scikit learn so I will be using that module since it is already prepared for importing
 
@@ -44,6 +43,7 @@ This MLP will perform binary classification and will be splitting the data into 
 Results: The results of this project is an MLP capable of classifying breast tumors based on metrics describing the tumor with 96% test accuracy in just 500 epochs, taking only about 10 minutes to train.
 
 ---
+### 2. Introduction
 
 #### 1. What is an MLP?
 

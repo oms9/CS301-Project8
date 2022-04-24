@@ -154,7 +154,7 @@ My approach is using a multi-layer perceptron to perform binary classification u
 
 This is a good approach because perceptrons by nature are exceptional at recognizing patterns, even discovering patterns that human trainers and supervisors did not even know existed in the data.
 
-This is more useful than simple binary classification using a binary tree or trying to linearly separate the data because it is more flexible and pattern driven rather than being a threshhold game where 
+This is more useful than simple binary classification using a binary tree or trying to linearly separate the data because it is more flexible and pattern driven rather than being a threshhold game where:
 
 ```
 if  numbers  >= x: class a

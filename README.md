@@ -5,7 +5,9 @@ Author:  Omar Shalaby
 
 Relevant Links:
 
-https://github.com/oms9/CS301-Group3-Project
+https://pantelis.github.io/data-science/aiml-common/lectures/classification/classification-intro/_index.html
+
+https://pantelis.github.io/data-science/aiml-common/lectures/classification/perceptron/_index.html
 
 https://www.kaggle.com/competitions/breast-cancer-data/overview
 

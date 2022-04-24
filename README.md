@@ -167,17 +167,15 @@ else: class b
 
 
 ### 6. Experiments
-To demonstrate that my approach solves the problem, I evaluted the model after training it to see the accuracy of it's predictions.
+To demonstrate that my approach solves the problem, I evaluted the model after training it to see the accuracy of it's predictions, over approximately 5 minutes to run the entire script including loading the data and 4.3 minutes of training, the model was able to achieve 96% accuracy for the validation portion of the data.
 
 <br>
 
-We can use TensorFlow and PyTourch to compare performance to the pure JAX implementation of the perceptron and evalute the performance and the speed of the model.
+We can use TensorFlow and PyTourch to compare performance to the pure JAX implementation of the perceptron and evalute the performance and the speed of the model. (TBD)
 
 <br>
 
 I will visualize the weights to try to understand which paramters are most impactful on the decision/classification problem when it comes to the tumors.
-
-
 
 ---
 ### 7. Conclusion
@@ -202,7 +200,7 @@ To further improve this model, we can try to scavenge more data from more countr
 !pip install dm-haiku #Install Haiku, a neural network building library for JAX.
 ```
 ```python
-#Importing JAX, Haiku and the data from sklearn
+#Importing JAX, Haiku and the data from sklearn.
 import jax
 import haiku as hk
 import jax.numpy as jnp
@@ -212,8 +210,8 @@ from sklearn.metrics import accuracy_score
 from sklearn.model_selection import train_test_split
 
 #Initializing JAX.
-key = jax.random.PRNGKey(2)
-print('JAX is running on the:', jax.lib.xla_bridge.get_backend().platform)
+key = jax.random.PRNGKey(2) #Setting a random key for reproducability of code.
+print('JAX is running on the:', jax.lib.xla_bridge.get_backend().platform) #Checking to see if google provided a GPU to run this notebook.
 #Make sure this reads: "JAX is running on the: gpu" during testing.
 #           ↓↓
 ```
@@ -234,7 +232,7 @@ X, Y = datasets.load_breast_cancer(return_X_y=True)
 #Applying the 80-20 split.
 parameters_train, parameters_test, predictions_train, predictions_test = train_test_split(X, Y, train_size=0.8, stratify=Y, random_state=123)
 
-#Converting the data to be JAX compatible.
+#Converting the data to be JAX compatible, changing from NumPy to JAX arrays instead (which are on the GPU).
 parameters_train = jnp.array(parameters_train, dtype=jnp.float32) 
 parameters_test = jnp.array(parameters_test, dtype=jnp.float32)
 predictions_train = jnp.array(predictions_train, dtype=jnp.float32)
@@ -251,7 +249,7 @@ Standard data normalization procedure using the µ (mean) and the σ (standard d
 mean = parameters_train.mean(axis=0)
 std = parameters_train.std(axis=0)
 
-#Normalize the data.
+#Normalize the data by subtracting mean from each element and dividing by standard deviation.
 parameters_train = (parameters_train - mean) / std
 parameters_test = (parameters_test - mean) / std
 ```
@@ -277,11 +275,11 @@ We only make the necessary changes, which is shaping the output and keep the def
 ---
 
 ```python
-def FeedForward(x):
-    mlp = hk.nets.MLP(output_sizes=[5,10,15,1])
-    return mlp(x)
+def FeedForward(x): #Define the feed forward function.
+    mlp = hk.nets.MLP(output_sizes=[5,10,15,1]) #This is the sequence of our layer sizes, 30(to match # of params) → 10 → 15 → 1(output layer)
+    return mlp(x) #Returns the output.
 
-model = hk.transform(FeedForward) #Transform the function after we are done.
+model = hk.transform(FeedForward) #Transform the function after we are done into a pure JAX function.
 ```
 ---
 ### The Loss Function
@@ -298,11 +296,11 @@ The function should accept the weights, params and diagnosis(actual) and then ap
 
 ---
 ```python
-def NegLogLoss(weights, params, actual):
-    preds = model.apply(weights, key, params) #Key is the RNG seed we initialized JAX with (2).
-    preds = preds.squeeze()
+def NegLogLoss(weights, params, actual):#Dfine the loss function (negative log).
+    preds = model.apply(weights, key, params) #This applies the model (only possible after transformation to pure fx).
+    preds = preds.squeeze() #Removes axes to achieve a better "fit".
     preds = jax.nn.sigmoid(preds) #Sigmoid activation function call.
-    return (- actual * jnp.log(preds) - (1 - actual) * jnp.log(1 - preds)).mean()
+    return (- actual * jnp.log(preds) - (1 - actual) * jnp.log(1 - preds)).mean() #The formula for the negtative log function.
 ```
 ---
 ### The Weights updater
@@ -311,8 +309,8 @@ This is a very simple function to just update the weights using the learning rat
 
 ---
 ```python
-def UpdateWeights(weights,gradients):
-    return (weights - learning_rate * gradients)
+def UpdateWeights(weights, gradients):
+    return (weights - learning_rate * gradients) #Very simple update step.
 ```
 ---
 ### Training/Model parameters
@@ -321,9 +319,9 @@ Speaking of the paramters, let's define them now!
 
 ---
 ```python
-params = model.init(key, parameters_train[:5])
-epochs = 500 #500 epochs to match the notebook mentioned in 3. Realted Works
-batch_size = 32 #arbitrary batch size number
+params = model.init(key, parameters_train[:5]) #Since parameters are not stored with the model, we have to init them using this function providing an RNG key andsome dummy inputs
+epochs = 500 #500 epochs to match the notebook mentioned in 3. Realted Works.
+batch_size = 32 #arbitrary batch size number.
 learning_rate = jnp.array(0.001) #arbitrary learning rate
 #(although it is a little high so Google doesn't suspend the runtime.)
 ```
@@ -335,24 +333,24 @@ Speaking of training, let's train the model!
 ---
 ```python
 for i in range(1, epochs+1):
-    batches = jnp.arange((parameters_train.shape[0]//batch_size)+1) #Indexing the batches
+    batches = jnp.arange((parameters_train.shape[0]//batch_size)+1) #Indexing the batches.
 
     losses = [] #We use a list to keep a history of our losses for every state.
     for batch in batches:
-        if batch != batches[-1]: start, end = int(batch*batch_size), int(batch*batch_size+batch_size)
+        if batch != batches[-1]: start, end = int(batch*batch_size), int(batch*batch_size+batch_size) #Last iteration condition.
         else: start, end = int(batch*batch_size), None
 
-        #This is what one batch looks like
+        #This is what one batch looks like.
         X_batch, Y_batch = parameters_train[start:end], predictions_train[start:end]
 
-        #Calling our loss function and updating the parameters
+        #Calling our loss function and updating the parameters while utilizing JAX's value and grad functions to accelerate finding the gradients.
         loss, param_grads = value_and_grad(NegLogLoss)(params, X_batch, Y_batch)
         params = jax.tree_map(UpdateWeights, params, param_grads)
-        losses.append(loss)#Append loss, and then loop to next batch
+        losses.append(loss)#Append loss, and then loop to next batch.
 
         #A status print out with the current loss in the loop.
         #I chose to have it re-use the same line so that the output doesn't get messy
-        #Besides, we are using a list (losses) to keep track of the loss over epoch anyway
+        #Besides, we are using a list (losses) to keep track of the loss over epoch anyway.
         print("\rEpoch:", i, "Loss:", loss, end="")
 ```
 ---
@@ -367,23 +365,22 @@ def MakePredictions(weights, params, batch_size=32):
 
     predictions = []#Same technique as keeping history of losses.
     for batch in batches:
-        if batch != batches[-1]: start, end = int(batch*batch_size), int(batch*batch_size+batch_size)
-        else: start, end = int(batch*batch_size), None
-
-        parameters_batch = params[start:end]
-        predictions.append(model.apply(weights, key, parameters_batch))
+        if batch != batches[-1]: start, end = int(batch*batch_size), int(batch*batch_size+batch_size) #Last iteration condition.
+        else: start, end = int(batch*batch_size), None 
+        parameters_batch = params[start:end] #Preparing the list
+        predictions.append(model.apply(weights, key, parameters_batch))#Apply the model on the data and log the predicitons.
 
     return predictions
 ```
 ```python
 #Now to make predictions using the training set.
-output_predictions = MakePredictions(params, parameters_train, 32)
-output_predictions = jnp.concatenate(output_predictions).squeeze()
-output_predictions = jax.nn.sigmoid(output_predictions)
-output_predictions = (output_predictions > 0.5).astype(jnp.float32)
+output_predictions = MakePredictions(params, parameters_train, 32) #Running the make predictions function defined here ↑
+output_predictions = jnp.concatenate(output_predictions).squeeze() #Shaping the predictions.
+output_predictions = jax.nn.sigmoid(output_predictions) #Sigmoid activation function to make this next step easier.
+output_predictions = (output_predictions > 0.5).astype(jnp.float32) #The outputs are in the range from 0 → 1, we classify them using 0.5 as a threshhold.
 ```
 ```python
-#Now to prepare the validation predictions.
+#Now to prepare the validation predictions, same procedure as the output_predictions above ↑
 validation_predictions = MakePredictions(params, parameters_test, 32)
 validation_predictions = jnp.concatenate(validation_predictions).squeeze()
 validation_predictions = jax.nn.sigmoid(validation_predictions)

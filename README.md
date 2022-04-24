@@ -47,23 +47,23 @@ Results: The results of this project is an MLP capable of classifying breast tum
 
 #### 1. What is an MLP?
 
-MLP is short for multi-layer perceptron. A fully connected neural network with multiple layers utilizing a feedforward architecture. All the neurons in one layer are connected to the next and each have weights and biases for these connections.
+> MLP is short for multi-layer perceptron. A fully connected neural network with multiple layers utilizing a feedforward architecture. All the neurons in one layer are connected to the next and each have weights and biases for these connections.
 
-<br>
+
 
 #### 2. What kind of problem is this?
 
-This is a Binary classification problem. Meaning that we are trying to decide, based on the data and parameters that we have for a certain element whether it belongs to class A or class B, in this case we are trying to decide if a certain tumor is either Malignant or Benign using its metrics.
+> This is a Binary classification problem. Meaning that we are trying to decide, based on the data and parameters that we have for a certain element whether it belongs to class A or class B, in this case we are trying to decide if a certain tumor is either Malignant or Benign using its metrics.
 
-<br>
+
 
 #### 3. What are JAX and Haiku?
 
-JAX is a python library that allows tasks to be run asynchronously on accelerator hardware and performs matrix manipulation and differentiation on a GPU/TPU extremely quickly and efficiently, it is designed from the ground up to be a high-performance library for ML research, it is quite similar to Numpy.
+> JAX is a python library that allows tasks to be run asynchronously on accelerator hardware and performs matrix manipulation and differentiation on a GPU/TPU extremely quickly and efficiently, it is designed from the ground up to be a high-performance library for ML research, it is quite similar to Numpy.
 
-Haiku is a library built on top of JAX that enables users to use familiar object-oriented programming models while allowing full access to JAX’s pure function transformations, Haiku is desgined to make managing model parameters and state simple and easy.
+> Haiku is a library built on top of JAX that enables users to use familiar object-oriented programming models while allowing full access to JAX’s pure function transformations, Haiku is desgined to make managing model parameters and state simple and easy.
 
-<br>
+
 
 #### 4. Why breast cancer?
 

@@ -12,6 +12,8 @@ https://scikit-learn.org/stable/datasets/toy_dataset.html#breast-cancer-wisconsi
 
 https://coderzcolumn.com/tutorials/artificial-intelligence/create-neural-networks-using-high-level-jax-api
 
+## Project report:
+
 ---
 ### 1. Abstract
 This project aims to classify breast tumors using the Wisconsin Breast Cancer Diagnostic dataset into two categories. Benign and Malignant, based on the features of the tumor.

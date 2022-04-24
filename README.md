@@ -16,7 +16,7 @@ https://scikit-learn.org/stable/datasets/toy_dataset.html#breast-cancer-wisconsi
 https://coderzcolumn.com/tutorials/artificial-intelligence/create-neural-networks-using-high-level-jax-api
 
 Colab notebook for this project:
-https://colab.research.google.com/drive/1HoJi0CYcJ4zsRxIyots1SSdIGQ_xQmby
+https://colab.research.google.com/github/oms9/CS301-Project8/blob/main/CS301_Project_8.ipynb
 
 ---
 ## Project report:

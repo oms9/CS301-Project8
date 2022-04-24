@@ -10,7 +10,7 @@ https://www.kaggle.com/competitions/breast-cancer-data/overview
 
 https://scikit-learn.org/stable/datasets/toy_dataset.html#breast-cancer-wisconsin-diagnostic-dataset
 
-
+https://coderzcolumn.com/tutorials/artificial-intelligence/create-neural-networks-using-high-level-jax-api
 
 ---
 ### 1. Abstract

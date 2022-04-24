@@ -43,10 +43,20 @@ This MLP will perform binary classification and will be splitting the data into 
 
 Results: The results of this project is an MLP capable of classifying breast tumors based on metrics describing the tumor with 96% test accuracy in just 500 epochs, taking only about 10 minutes to train.
 
-
-
 ---
-### 2. Introduction
+
+#### 1. What is an MLP?
+
+MLP is short for multi-layer perceptron. A fully connected neural network with multiple layers utilizing a feedforward architecture. All the neurons in one layer are connected to the next and each have weights and biases for these connections.
+
+#### 2. What kind of problem is this?
+
+This is a Binary classification problem. Meaning that we are trying to decide, based on the data and parameters that we have for a certain element whether it belongs to class A or class B, in this case we are trying to decide if a certain tumor is either Malignant or Benign using its metrics.
+
+<br> 
+
+#### 3. Why breast cancer?
+
 Breast cancer is the single most common cancer among women, it is a large threat and an even larger cause of death for women worldwide. Approximately 124 out of 100,000 women are diagnosed with breast cancer, 23 of which are likely to die because of the tumor.
 
 <br>
@@ -57,7 +67,7 @@ Early detection is key in preventing death, if detected early there is chance fo
 
 As we can see from the results, AI can help doctors and therefore women around the world by analyzing every bit of data about the detected tumors and providing accurate (up to 96% with little training!) predictions of the type of tumor.
 
-
+<br>
 
 ---
 

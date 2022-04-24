@@ -12,6 +12,7 @@ https://scikit-learn.org/stable/datasets/toy_dataset.html#breast-cancer-wisconsi
 
 https://coderzcolumn.com/tutorials/artificial-intelligence/create-neural-networks-using-high-level-jax-api
 
+---
 ## Project report:
 
 ---

@@ -173,11 +173,7 @@ I will visualize the weights to try to understand which paramters are most impac
 ### 7. Conclusion
 We can see from the evaluations and results that the perceptron was very successful!
 
-<br>
-
 To further improve this model, we can try to scavenge more data from more countries and different body types and ethnicities to try and strengthen the model or we can instead have different models for different ethnicities as the similarities and differences between the tumors are discovered using the model and the new data points and sources.
-
-
 
 ---
 

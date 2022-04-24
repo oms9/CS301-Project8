@@ -169,17 +169,17 @@ To further improve this model, we can try to scavenge more data from more countr
 
 ---
 
-##The Implementation:
+## The Implementation:
 ---
 
-```python
+```bash
 #Run only once per runtime to install JAX and Haiku
 #To see the output of this cell, comment out %%capture but be warned that it is long and a little pointless
 %%capture 
 !pip install JAX #Install JAX
 !pip install dm-haiku #Install Haiku, a neural network building library for JAX.
 ```
-```
+```python
 #Importing JAX, Haiku and the data from sklearn
 import jax
 import haiku as hk
@@ -196,7 +196,7 @@ print('JAX is running on the:', jax.lib.xla_bridge.get_backend().platform)
 #           ↓↓
 ```
 ---
-###Converting the data from numpy to JAX arrays.
+### Converting the data from numpy to JAX arrays.
 
 The data as imported form SK learn is not handled on the GPU, so we convert it to be JAX compatible after performing the [80 - 20] split for the [train - test] sets.
 
@@ -219,7 +219,7 @@ predictions_train = jnp.array(predictions_train, dtype=jnp.float32)
 predictions_test = jnp.array(predictions_test, dtype=jnp.float32)
 ```
 ---
-###Data normalization
+### Data normalization
 
 Standard data normalization procedure using the µ (mean) and the σ (standard deviation).
 
@@ -234,7 +234,7 @@ parameters_train = (parameters_train - mean) / std
 parameters_test = (parameters_test - mean) / std
 ```
 ---
-###The MLP
+### The MLP
 
 Here we define the forward function for the MLP and then we transform it using haiku.
 
@@ -262,7 +262,7 @@ def FeedForward(x):
 model = hk.transform(FeedForward) #Transform the function after we are done.
 ```
 ---
-###The Loss Function
+### The Loss Function
 
 This next block is responsible for defining a loss function to use in training our perceptron.
 
@@ -283,7 +283,7 @@ def NegLogLoss(weights, params, actual):
     return (- actual * jnp.log(preds) - (1 - actual) * jnp.log(1 - preds)).mean()
 ```
 ---
-###The Weight updater
+### The Weights updater
 
 This is a very simple function to just update the weights using the learning rate as part of our training loop.
 
@@ -293,7 +293,7 @@ def UpdateWeights(weights,gradients):
     return (weights - learning_rate * gradients)
 ```
 ---
-###Training/Model parameters
+### Training/Model parameters
 
 Speaking of the paramters, let's define them now!
 
@@ -306,7 +306,7 @@ learning_rate = jnp.array(0.001) #arbitrary learning rate
 #(although it is a little high so Google doesn't suspend the runtime.)
 ```
 ---
-###The Training loop
+### The Training loop
 
 Speaking of training, let's train the model!
 
@@ -334,7 +334,7 @@ for i in range(1, epochs+1):
         print("\rEpoch:", i, "Loss:", loss, end="")
 ```
 ---
-###Making Predictions
+### Making Predictions
 
 Now to define the predictions function, it is a similar structure to the training loop so we can make predictions in batches to more efficiently compute them over the dataset.
 
@@ -368,7 +368,7 @@ validation_predictions = jax.nn.sigmoid(validation_predictions)
 validation_predictions = (validation_predictions > 0.5).astype(jnp.float32)
 ```
 ---
-###Performance evaluation.
+### Performance evaluation.
 
 Now we are going to see the score and then the accuracy of the model.
 

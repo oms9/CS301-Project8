@@ -1,10 +1,8 @@
 # Binary classification in JAX using an MLP
 
-##Author:  Omar Shalaby
+Author:  Omar Shalaby
 
-
-
-###Relevant Links:
+Relevant Links:
 
 https://github.com/oms9/CS301-Group3-Project
 

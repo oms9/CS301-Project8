@@ -96,7 +96,7 @@ I plan to tackle this problem in JAX, with the help of Haiku but the problem is 
 
 ### 4. Data
 The data I am working with for this project is numerical and it takes the form of a
-set of paramters 30 in total, describing the tumor. These parameters are:
+set of paramters, 30 in total, to describe the tumor. These parameters are:
 
 ```
 radius (mean)

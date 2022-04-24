@@ -33,7 +33,7 @@ The dataset has 569 entries:
 
 <br>
 
-I am going to tackle this problem by creating an MLP in JAX with the help of Haiku, a neural network building library for JAX, which is a python library that allows for tasks to be run asynchronously on accelerator hardware and performs matrix manipulation and differentiation on a GPU/TPU.
+I am going to tackle this problem by creating an MLP in JAX with the help of Haiku.
 
 This dataset is also present in scikit learn so I will be using that module since it is already prepared for importing
 
@@ -53,9 +53,15 @@ MLP is short for multi-layer perceptron. A fully connected neural network with m
 
 This is a Binary classification problem. Meaning that we are trying to decide, based on the data and parameters that we have for a certain element whether it belongs to class A or class B, in this case we are trying to decide if a certain tumor is either Malignant or Benign using its metrics.
 
+#### 3. What are JAX and Haiku?
+
+JAX is a python library that allows tasks to be run asynchronously on accelerator hardware and performs matrix manipulation and differentiation on a GPU/TPU extremely quickly and efficiently, it is designed from the ground up to be a high-performance library for ML research, it is quite similar to Numpy.
+
+Haiku is a library built on top of JAX that enables users to use familiar object-oriented programming models while allowing full access to JAX’s pure function transformations, Haiku is desgined to make managing model parameters and state simple and easy.
+
 <br> 
 
-#### 3. Why breast cancer?
+#### 4. Why breast cancer?
 
 Breast cancer is the single most common cancer among women, it is a large threat and an even larger cause of death for women worldwide. Approximately 124 out of 100,000 women are diagnosed with breast cancer, 23 of which are likely to die because of the tumor.
 
